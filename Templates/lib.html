@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap4.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <div class ="container">
+        <nav class="navbar navbar-expand-lg bg-light" style="background-color: #e3f2fd;">
+            <div class="container-fluid">
+              <a class="navbar-brand" href="#">IMS</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{{url_for('home_page')}}">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Dashboard</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="{{url_for('library_page')}}">Library</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Store</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">User</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+        </nav>
+  
+        <br>
+
+        <div class="row">
+          <div class="col-lg-3 col-md-12 col-sm-12">
+
+          <!--insert-->
+          </div>
+
+        <div class="col-lg-9 col-md-12 col-sm-12">
+        <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Add book
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form action="{{ url_for('add_book')}}" method="POST">
+          <div class="form-group">
+            <label for="Name">ID</label>
+            <input class="form-control" type="int" name="ID" placeholder="ID" required>
+          </div>
+          <div class="form-group">
+              <label for="Name">Title</label>
+              <input class="form-control" type="text" name="Name" placeholder="Title" required>
+          </div>
+          <div class="form-group">
+              <label for="Author">Author</label>
+              <input class="form-control"  type="text" name="Author" placeholder="Author" required>
+          </div>
+          <div class="form-group">
+              <label for="Serial">Serial No</label>
+              <input class="form-control"  type="text" name="Serial" placeholder="Serial No." required>
+          </div>
+          
+          <button type="submit" class="btn btn-md btn-success">Submit</button>
+          
+      </form>
+      
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+      
+        <table id="table" class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Title</th>
+              <th scope="col">Author</th>
+              <th scope="col">Serial No.</th>
+              <th scope="col">Modify</th>
+            </tr>
+          </thead>
+          <tbody>
+           
+            {% for library in library %}
+            <tr>
+              <td>{{library[0]}}</td>
+              <td>{{library[1]}}</td>
+              <td>{{library[2]}}</td>
+              <td>{{library[3]}}</td>
+              <td> <a href="delete/{{library[0]}}"> Delete </a> </td>
+            </tr>    
+            {% endfor %}
+           
+          </tbody>
+        </table>
+        </div>
+        </div>
+          
+          
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap4.min.js"></script>
+
+    <script>$(document).ready(function () 
+    {
+      $('#table').DataTable();
+    }); 
+    </script>
+    
+</body>
+</html>

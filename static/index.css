@@ -1,0 +1,82 @@
+*{
+    margin:0;
+    padding:0;
+    font-family:'Roboto', sans-serif;
+}
+
+.row{
+    display:flex;
+    height:88%;
+    align-items:center;
+}
+.colm{
+    flex-basis:50%;
+}
+h1{
+    color:darkcyan;
+    font-size:30px;
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+p{
+    color:black;
+    font-size:11px;
+    font-family:Arial;
+    line-height:30px;
+    letter-spacing: 1.2px;
+}
+.button{
+    width:160px;
+    height:40px;
+    background-color:darkcyan;
+    border:none;
+    margin-bottom: 10px;
+    margin-left: 20px;
+    font-size: 18px;
+    border-radius: 10px;
+    cursor:pointer;
+}
+.button a{
+
+    text-decoration: none;
+    color:black;
+    transition: 3s ease;
+}
+
+.button:hover{
+    background-color: white;
+}
+.card{
+    
+    width:200px;
+    height:230px;
+    border-radius:10px;
+    padding:15px 15px;
+    box-sizing:border-box;
+    cursor:pointer;
+    margin:10px 15px;
+    background-position: center;
+    background-size: cover;
+    transition:transform 0.5s;
+}
+.card1{
+    background-image: url(lib1.jpeg);
+}
+.card2{
+    background-image: url(lib2.jpeg);
+}
+.card3{
+    background-image: url(lib3.jpeg);
+}
+
+.card:hover{
+    transform:translateY(-10px)
+}
+h5{
+    color:white;
+    text-shadow:0 0 5px #999;
+}
+.card p{
+    text-shadow:0 0 15px #000;
+    font-size:8px;
+}
